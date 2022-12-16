@@ -1,0 +1,223 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,#root{
+    width: 100%;
+    background: rgb(9,14,124);
+    background: linear-gradient(90deg, rgb(116, 98, 199) 0%, rgba(0,212,255,1) 100%);
+    overflow: hidden;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0,254,255);
+    background: linear-gradient(90deg, rgba(0,254,255,1) 0%, rgb(131, 156, 84) 100%);
+    min-height: 100px;
+    color: #fff;
+    position: relative;
+    &::before{
+        background: url("../images/trollface.png");
+        content: "";
+        background-size: contain;
+        position: absolute;
+        top: 30px;
+        left: calc(50% - 175px);
+        width: 50px;
+        height: 50px;
+        background-repeat: no-repeat;
+    }
+}
+
+.generator{
+    position: relative;
+    text-align: center;
+    background-color: rgb(197, 197, 197);
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    width: 90vw;
+    height: 80vh;
+
+    &__img-text{
+        position: absolute;
+        font-size: 2rem;
+        color: #fff;
+        font-family: fantasy;
+        left: 10%;
+        top: 50%;
+    }
+
+}
+
+.form{
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width:768px){
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    label{
+        display: inline-block;
+        width: 100%;
+
+        @media screen and (min-width:768px){
+            display: flex;
+            justify-content: center;
+            flex: 1 0 49%;
+        }
+        input{
+            display: inline-block;
+            max-width: 20rem;
+            width: 80%;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 2rem;
+            border:none;
+            @media screen and (min-width:768px){
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+.img{
+    padding: 1rem;
+    overflow: hidden;
+    max-height: 80%;
+    width: 100%;
+    height: 100%;
+    img{
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.glow-on-hover {
+    padding: 1rem;
+    width: 100%;
+    max-width: 20rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 5rem;
+    font-weight: 800;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 5rem;
+}
+
+.glow-on-hover:active {
+    color: rgb(255, 255, 255)
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    left: 0;
+    top: 0;
+    border-radius: 5rem;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+.box {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 5px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;    
+}
+
+.btn-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.memeText{
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    z-index: 999;
+    font-family: impact;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow:2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0px 2px 0 #000,
+    2px 0px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 2px 5px #000;
+    max-width:200px;
+    word-wrap:break-word;
+}
+
+.removeBtn{
+    position: absolute;
+    top: 2px;
+    padding: 0.2rem;
+    border-radius: 5rem;
+    &:hover{
+        color: #fff;
+        background-color: black;
+        cursor: pointer;
+    }
+}
